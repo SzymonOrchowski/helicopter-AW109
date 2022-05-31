@@ -1,0 +1,86 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    overflow: hidden;
+    /* background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 50%, rgb(228, 197, 178) 70%, rgb(44, 69, 136) 100%, rgb(18, 35, 49) 100%); */
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+    /* background: url('../static/img/BackGroundAlpha.png'); */
+    background-size: cover;
+}
+
+#options-container {
+    position:absolute;
+    top: 0px;
+    left: calc(100% - 180px);
+    /* margin-top: 10px; */
+    text-align: center;
+    padding-top: 13px;
+    width: min-content;
+    height: 50px;
+    /* border: solid red 1px; */
+}
+
+.options-button {
+    background-color: rgba(255,255,255,0.8);
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: black 1px solid;
+    border-radius: 15px;
+    width: 150px;
+}
+
+.options-button:hover {
+    background-color: rgba(255,255,255,0.5);
+}
+
+#gitHub-button {
+    position:absolute;
+    top: calc(100% - 80px);
+    left: calc(100% - 120px);
+    background-color: rgba(255,255,255,0.8);
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: black 1px solid;
+    border-radius: 15px;
+}
+
+#gitHub-button:hover {
+    background-color: rgb(168, 125, 76)
+}
+
+#gitHub-img {
+    margin-top: 5px;
+    width: 50px
+}
+
+#groupsVisibility_container {
+    position:absolute;
+    top: 50px;
+    left: calc(100% - 180px);
+    text-align: left;
+    background-color: rgba(255,255,255,0.8);
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: black 1px solid;
+    border-radius: 15px;
+    width: 127px;
+}
+
+
