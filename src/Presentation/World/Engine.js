@@ -17,8 +17,8 @@ export default class Engine
 
     setModel()
     {
-        this.model = this.resource.scene
-        this.model.scale.set(0.007, 0.007, 0.007)
+        this.model = this.resource.scene.children[0]
+
         this.scene.add(this.model)
 
         this.model.traverse((child) =>

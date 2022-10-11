@@ -11,34 +11,23 @@ import UserInterface from './Utils/UserInterface'
 // const sources = [
 //     {
 //         name: 'engineModel',
-//         type: 'fbxModel',
-//         path: 'models/EngineDemo.fbx'
-//     }
-// ]
-
-// const sources = [
-//         {
-//             name: 'engineModel',
-//             type: 'fbxModel',
-//             path: 'models/AgustaDaVinci.FBX'
-//         }
-//     ]
-
-// const sources = [
+//         type: 'gltfModel',
+//         path: 'models/AW139D.gltf'
+//     },
 //     {
-//         name: 'engineModel',
-//         type: 'fbxModel',
-//         path: 'models/AW139D.FBX'
+//         name: 'colorMapTexture',
+//         type: 'texture',
+//         path: 'models/textures/Agusta139_D.png'
 //     }
 // ]
 
 const sources = [
-    {
-        name: 'engineModel',
-        type: 'gltfModel',
-        path: 'models/AW139D.gltf'
-    }
-]
+        {
+            name: 'engineModel',
+            type: 'gltfModel',
+            path: 'models/AW139D/Augusta_AW139D.gltf'
+        }
+    ]
 
 let instance = null
 
@@ -62,8 +51,6 @@ export default class Presentation
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.world = new World()
-        // this.outline = new Outline()
-        // this.userInterface = new UserInterface()
 
         this.sizes.on('resize', () => {
             this.resize()

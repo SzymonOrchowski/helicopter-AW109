@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import Presentation from "../Presentation"
 import Environment from './Environment'
 import Engine from './Engine.js'
+import { Vector2 } from 'three'
 
 export default class World
 {
@@ -27,45 +28,26 @@ export default class World
         this.resources.on('ready', () =>
         {
             this.engine = new Engine()
-            // this.presentation.outline.selectedObjects.push(this.engine.model)
-            // this.engine.model.position.x = 0
-            // this.engine.model.position.y = 2
-            this.engine.model.position.y = -0.12
-            this.engine.model.rotation.x = 40 * 180 / Math.PI
-            this.engine.model.rotation.z = 120 * 180 / Math.PI
 
-            // console.log(this.engine.model.children)
             this.engine.model.children[0].children.forEach(part => {
                 if (part.material.name==="paint") {
                     part.material.color.r = 1
-                    part.material.color.g = 0.1
-                    part.material.color.b = 0.1
+                    part.material.color.g = 1
+                    part.material.color.b = 1
+
+                    part.material.map = this.resources.items.colorMapTexture
+
+                    this.resources.items.colorMapTexture.offset = new Vector2(0.5,0.5)
+
+                    console.log(this.resources.items.colorMapTexture.offset)
                 }
-
-                console.log(part.material.name)
-                //part.meterial = new THREE.MeshPhongMaterial()
-                // part.material.forEach(subpart => {
-                //     console.log(subpart.emissive)
-                // })
-                // part.material.shininess = 0
-            //     part.material.color.r = 0.2
-            //     part.material.color.g = 0.2
-            //     part.material.color.b = 0.3
-            //     part.material.transparent = true
-
-
-            //     part.geometry.applyMatrix4(new THREE.Matrix4().makeTranslation(0,1,0))
-            //     this.alertsArray.forEach(alertName => {
-            //         if (part.name === alertName)
-            //         {
-            //             part.material.color.r = 0.4
-            //             part.material.color.g = 0.0
-            //             part.material.color.b = 0.0
-            //         }
-            //     })
-
-            //     //this.updateVisibilityState()
             })
+
+            this.engine.model.position.y = -0.12
+            // this.engine.model.rotation.x = 40 * 180 / Math.PI
+            this.engine.model.rotation.y = 120 * 180 / Math.PI
+
+            this.engine.model.scale.set(0.007, 0.007, 0.007)
         })
 
     }

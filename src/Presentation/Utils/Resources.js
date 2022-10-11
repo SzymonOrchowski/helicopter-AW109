@@ -26,6 +26,7 @@ export default class Resources extends EventEmitter
         this.loaders.gltfLoader = new GLTFLoader()
         this.loaders.fbxLoader = new FBXLoader()
         this.loaders.objLoader = new OBJLoader()
+        this.loaders.textureLoader = new THREE.TextureLoader()
     }
 
     startLoading()
@@ -53,6 +54,17 @@ export default class Resources extends EventEmitter
                     }
                 )
             }
+            else if(source.type === 'texture')
+            {
+                this.loaders.textureLoader.load(
+                    source.path,
+                    (file) =>
+                    {
+                        this.sourceLoaded(source, file)
+                    }
+                )
+            }
+
         }
     }
 
