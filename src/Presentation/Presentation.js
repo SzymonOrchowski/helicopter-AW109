@@ -16,13 +16,29 @@ import UserInterface from './Utils/UserInterface'
 //     }
 // ]
 
+// const sources = [
+//         {
+//             name: 'engineModel',
+//             type: 'fbxModel',
+//             path: 'models/AgustaDaVinci.FBX'
+//         }
+//     ]
+
+// const sources = [
+//     {
+//         name: 'engineModel',
+//         type: 'fbxModel',
+//         path: 'models/AW139D.FBX'
+//     }
+// ]
+
 const sources = [
-        {
-            name: 'engineModel',
-            type: 'fbxModel',
-            path: 'models/AgustaDaVinci.fbx'
-        }
-    ]
+    {
+        name: 'engineModel',
+        type: 'gltfModel',
+        path: 'models/AW139D.gltf'
+    }
+]
 
 let instance = null
 

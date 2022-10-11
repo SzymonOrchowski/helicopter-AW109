@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js'
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
 import EventEmitter from './EventEmitter.js'
 
 export default class Resources extends EventEmitter
@@ -24,6 +25,7 @@ export default class Resources extends EventEmitter
         this.loaders = {}
         this.loaders.gltfLoader = new GLTFLoader()
         this.loaders.fbxLoader = new FBXLoader()
+        this.loaders.objLoader = new OBJLoader()
     }
 
     startLoading()

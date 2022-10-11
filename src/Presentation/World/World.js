@@ -30,13 +30,23 @@ export default class World
             // this.presentation.outline.selectedObjects.push(this.engine.model)
             // this.engine.model.position.x = 0
             // this.engine.model.position.y = 2
-            this.engine.model.position.x = 0.1
+            this.engine.model.position.y = -0.12
+            this.engine.model.rotation.x = 40 * 180 / Math.PI
+            this.engine.model.rotation.z = 120 * 180 / Math.PI
+
             // console.log(this.engine.model.children)
-            this.engine.model.children.forEach(part => {
+            this.engine.model.children[0].children.forEach(part => {
+                if (part.material.name==="paint") {
+                    part.material.color.r = 1
+                    part.material.color.g = 0.1
+                    part.material.color.b = 0.1
+                }
+
+                console.log(part.material.name)
                 //part.meterial = new THREE.MeshPhongMaterial()
-                part.material.forEach(subpart => {
-                    console.log(subpart.emissive)
-                })
+                // part.material.forEach(subpart => {
+                //     console.log(subpart.emissive)
+                // })
                 // part.material.shininess = 0
             //     part.material.color.r = 0.2
             //     part.material.color.g = 0.2
