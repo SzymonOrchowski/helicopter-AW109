@@ -19,11 +19,11 @@ export default class Environment
         this.sunLight.shadow.camera.far = 15
         this.sunLight.shadow.mapSize.set(1024, 1024)
         this.sunLight.shadow.normalBias = 0.05
-        this.sunLight.position.set(0, 10, -35)
+        this.sunLight.position.set(0, -20, -35)
         this.scene.add(this.sunLight)
 
         // Light 2
-        this.ambientLight = new THREE.AmbientLight('#ffffff', 0.4)
+        this.ambientLight = new THREE.AmbientLight('#ffffff', 0.5)
         this.scene.add(this.ambientLight)
     }
 }

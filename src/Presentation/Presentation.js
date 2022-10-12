@@ -21,12 +21,52 @@ import UserInterface from './Utils/UserInterface'
 //     }
 // ]
 
+const serialNumbersDictionary = {
+    "31094":"GuardiaDiFinanza",
+    "31293":"GuardiaCostiera",
+    "31301":"GuardiaDiFinanza",
+    "31303":"GuardiaCostiera",
+    "31313":"GuardiaCostiera",
+    "31329":"GuardiaCostiera",
+    "31413":"AeronauticaMilitare",
+    "31427":"AeronauticaMilitare",
+    "31434":"AeronauticaMilitare",
+    "31439":"AeronauticaMilitare"
+}
+
 const sources = [
+    {
+        "AeronauticaMilitare":
+        {
+            name: 'engineModel',
+            type: 'gltfModel',
+            path: 'models/AW139D-AeronauticaMilitare/Augusta_AW139D.gltf'
+        }
+    },
+    {
+        "GuardiaCostiera":
+        {
+            name: 'engineModel',
+            type: 'gltfModel',
+            path: 'models/AW139D-GuardiaCostiera/Augusta_AW139D.gltf'
+        }
+    },
+    {
+        "GuardiaDiFinanza":
+        {
+            name: 'engineModel',
+            type: 'gltfModel',
+            path: 'models/AW139D-GuardiaDiFinanza/Augusta_AW139D.gltf'
+        }
+    },
+    {
+        "default":
         {
             name: 'engineModel',
             type: 'gltfModel',
             path: 'models/AW139D/Augusta_AW139D.gltf'
         }
+    }
     ]
 
 let instance = null
@@ -42,12 +82,16 @@ export default class Presentation
         instance = this
 
         this.canvas = _canvas
-        this.parts = _parts
+        this.operator = _parts
+
+        //console.log(serialNumbersDictionary[this.operator[0]])
+
+        const filteredSources = sources.filter(source => Object.keys(source)[0] === serialNumbersDictionary[this.operator[0]])
 
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()
-        this.resources = new Resources(sources)
+        this.resources = new Resources(Object.values(filteredSources[0]))
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.world = new World()
@@ -59,7 +103,6 @@ export default class Presentation
         this.time.on('tick', () => {
             this.update()
         })
-
         // this.userInterface.on('changeAnimationState', () => {
         //     this.changeAnimationState()
         // })

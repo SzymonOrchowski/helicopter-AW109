@@ -43,11 +43,11 @@ export default class World
                 }
             })
 
-            this.engine.model.position.y = -0.12
+            this.engine.model.position.y = -0.15
             // this.engine.model.rotation.x = 40 * 180 / Math.PI
             this.engine.model.rotation.y = 120 * 180 / Math.PI
 
-            this.engine.model.scale.set(0.007, 0.007, 0.007)
+            this.engine.model.scale.set(0.008, 0.008, 0.008)
         })
 
     }
