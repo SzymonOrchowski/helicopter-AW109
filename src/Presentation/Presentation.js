@@ -64,7 +64,7 @@ const sources = [
         {
             name: 'engineModel',
             type: 'gltfModel',
-            path: 'models/AW139D/Augusta_AW139D.gltf'
+            path: 'models/AW139D/AW139Dparts.gltf'
         }
     }
     ]
@@ -84,10 +84,15 @@ export default class Presentation
         this.canvas = _canvas
         this.operator = _parts
 
-        //console.log(serialNumbersDictionary[this.operator[0]])
+        let operatorName = serialNumbersDictionary[this.operator[0]]
 
-        const filteredSources = sources.filter(source => Object.keys(source)[0] === serialNumbersDictionary[this.operator[0]])
+        if (!operatorName) { 
+            operatorName = "default"
+        }
 
+        const filteredSources = sources.filter(source => Object.keys(source)[0] === operatorName)
+        
+        // console.log(filteredSources)
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()

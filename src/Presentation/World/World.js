@@ -29,25 +29,18 @@ export default class World
         {
             this.engine = new Engine()
 
-            this.engine.model.children[0].children.forEach(part => {
-                if (part.material.name==="paint") {
-                    part.material.color.r = 1
-                    part.material.color.g = 1
-                    part.material.color.b = 1
-
-                    part.material.map = this.resources.items.colorMapTexture
-
-                    this.resources.items.colorMapTexture.offset = new Vector2(0.5,0.5)
-
-                    console.log(this.resources.items.colorMapTexture.offset)
-                }
-            })
-
             this.engine.model.position.y = -0.15
-            // this.engine.model.rotation.x = 40 * 180 / Math.PI
             this.engine.model.rotation.y = 120 * 180 / Math.PI
-
             this.engine.model.scale.set(0.008, 0.008, 0.008)
+
+            // console.log(this.engine.model.children)
+            //this.engine.model.children[0].visible = false
+            //this.engine.model.children[1].visible = false
+            //this.engine.model.children[2].visible = false
+            //this.engine.model.children[3].visible = false
+            //this.engine.model.children[4].visible = false
+            //this.engine.model.children[5].visible = false
+
         })
 
     }
@@ -86,32 +79,3 @@ export default class World
         }
     }
 }
-
-// Tee_Joint
-// Pipe
-// MountRR
-// EngineFront
-// FrontCompressor
-// Elbow_Joint002
-// MountRL
-// Elbow_Joint003
-// Elbow_Joint004
-// HeatExtractor
-// EngineBack001
-// Front_Bar
-// BarL
-// Engine
-// OutputBack
-// Elbow_Joint007
-// MountFR
-// Elbow_Joint005
-// CoolerBack
-// BarR
-// EngineBack
-// Elbow_Joint008
-// Electronics
-// Elbow_Joint006
-// Elbow_Joint001
-// CoolerFront
-// Rear_Bar
-// MountFL

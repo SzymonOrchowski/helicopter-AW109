@@ -17,17 +17,35 @@ export default class Engine
 
     setModel()
     {
-        this.model = this.resource.scene.children[0]
+        //console.log(this.resource.scene)
+        //this.model = this.resource.scene.children[0]
+        this.model = this.resource.scene
+
+        // console.log(this.model)
 
         this.scene.add(this.model)
 
         this.model.traverse((child) =>
-        {
-            if(child instanceof THREE.Mesh)
             {
-                child.castShadow = true
-            }
-        })
+                if(child instanceof THREE.Mesh)
+                {
+                    child.castShadow = true
+                }
+            })
+
+        // this.model.forEach(part => {
+        //     this.scene.add(part)
+        // })
+
+        // this.model.forEach(part => {
+        //     part.traverse((child) =>
+        //     {
+        //         if(child instanceof THREE.Mesh)
+        //         {
+        //             child.castShadow = true
+        //         }
+        //     })
+        // })
     }
 
     update()
