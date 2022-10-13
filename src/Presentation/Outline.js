@@ -36,8 +36,8 @@ export default class Outline
         
         this.outlinePass.edgeStrength = params.edgeStrength;
         this.outlinePass.edgeGlow = params.edgeGlow;
-        this.outlinePass.visibleEdgeColor.set(0xffffff);
-        this.outlinePass.hiddenEdgeColor.set(0xffffff);
+        this.outlinePass.visibleEdgeColor.set(0xff0000);
+        this.outlinePass.hiddenEdgeColor.set(0xff0000);
 
     }
 

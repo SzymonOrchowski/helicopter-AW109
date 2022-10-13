@@ -7,6 +7,7 @@ import World from './World/World'
 import Resources from './Utils/Resources'
 import Outline from './Outline'
 import UserInterface from './Utils/UserInterface'
+import Raycaster from './Utils/Raycaster'
 
 // const sources = [
 //     {
@@ -99,7 +100,9 @@ export default class Presentation
         this.resources = new Resources(Object.values(filteredSources[0]))
         this.camera = new Camera()
         this.renderer = new Renderer()
+        // this.outline = new Outline()
         this.world = new World()
+        this.raycaster = new Raycaster()
 
         this.sizes.on('resize', () => {
             this.resize()
@@ -135,6 +138,7 @@ export default class Presentation
     {
         this.camera.update()
         this.world.update()
+        // this.world.animateBlades()
         this.renderer.update()
         // this.outline.update()
     }

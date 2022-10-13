@@ -20,27 +20,29 @@ export default class World
         // const axesHelper = new THREE.AxesHelper()
         // this.scene.add(axesHelper)
 
-        //this.visibilityGroupsArray = ["rig", "engine", "cooling"]
-        //this.rigPartsArray = ["BarL", "BarR", "Front_Bar", "MountFL", "MountRL", "MountRR", "MountFR", "Rear_Bar"]
-        //this.enginePartsArray = ["Electronics", "Engine", "EngineBack", "EngineBack001", "EngineFront", "OutputBack"]
-        //this.coolingPartsArray = ["CoolerBack", "CoolerFront", "Elbow_Joint001", "Elbow_Joint002", "Elbow_Joint003", "Elbow_Joint004", "Elbow_Joint005", "Elbow_Joint006", "Elbow_Joint007", "Elbow_Joint008", "FrontCompressor", "HeatExtractor", "Pipe", "Tee_Joint"]
-
         this.resources.on('ready', () =>
         {
             this.engine = new Engine()
 
+            this.engine.model.children.forEach(section => {
+                section.children.forEach(part => {
+                    part.material = part.material.clone()
+                })
+            })
+
+            // this.engine.model.children.forEach(section => {
+            //     console.log(section.children.map(part => {return part.material.uuid}))
+            // })
+
+
+            // this.engine.model.children.forEach(section => {
+            //     this.presentation.outline.selectedObjects.push(section)
+            // })
+            // console.log(this.presentation.outline.selectedObjects)
+
             this.engine.model.position.y = -0.15
             this.engine.model.rotation.y = 120 * 180 / Math.PI
             this.engine.model.scale.set(0.008, 0.008, 0.008)
-
-            // console.log(this.engine.model.children)
-            //this.engine.model.children[0].visible = false
-            //this.engine.model.children[1].visible = false
-            //this.engine.model.children[2].visible = false
-            //this.engine.model.children[3].visible = false
-            //this.engine.model.children[4].visible = false
-            //this.engine.model.children[5].visible = false
-
         })
 
     }
@@ -49,7 +51,19 @@ export default class World
     {
         if(this.engine)
         {
-            this.engine.model.rotation.y += this.animationSpeed
+            // this.engine.model.rotation.y += 0.01
+            // console.log(this.engine.model.children[3])
+            // this.engine.model.children[2].rotation.y+=0.05
+            // this.engine.model.children[3].rotation.z+=0.1
+        }
+    }
+
+    animateBlades()
+    {
+        if(this.engine)
+        {
+            this.engine.model.children[2].rotation.y += 0.05
+            this.engine.model.children[3].rotation.z += 0.1
         }
     }
 
