@@ -107,10 +107,17 @@ body
 
 
 .mainTitle {
-    background-color: rgba(255,255,255,0.9);
-    border: black 2px solid;
+    position:absolute;
+    background-color:#eb0029;
+    width: 300px;
+    color: white;
+    border: black 1px solid;
     border-radius: 5px;
     padding: 3px 5px 3px 5px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    left:calc(50vw - 150px)
 }
 
 .section {
@@ -118,6 +125,20 @@ body
     border: black 1px solid;
     border-radius: 5px;
     margin-top: 8px
+}
+
+.section-left {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    width: 250px;
+}
+
+.section-right {
+    position: absolute;
+    top: 50px;
+    left: calc(100vw - 280px);
+    width: 250px;
 }
 
 .section-title {
@@ -131,6 +152,19 @@ body
     font-size: 0.9em;
     padding: 4px;
     text-align: left;
+}
+
+.row > td:nth-child(2) {
+    background-color: green;
+    border: 1px solid black;
+    color: white;
+    font-size: 0.7em;
+    text-align: right;
+    padding-right: 4px
+}
+
+.row > td:nth-child(3) {
+    text-align: center;
 }
 
 
@@ -148,7 +182,7 @@ body
 
 #landing-gear-info {
     top: 10px;
-    left: 30px;
+    left: 10px;
     position: absolute;
     z-index: 55;
     font-family: Arial, Helvetica, sans-serif;
@@ -156,7 +190,7 @@ body
 
 #main-rotor-info {
     top: 10px;
-    left: 30px;
+    left: 10px;
     position: absolute;
     z-index: 55;
     font-family: Arial, Helvetica, sans-serif;
@@ -164,7 +198,7 @@ body
 
 #tail-rotor-info {
     top: 10px;
-    left: 30px;
+    left: 10px;
     position: absolute;
     z-index: 55;
     font-family: Arial, Helvetica, sans-serif;
@@ -172,7 +206,7 @@ body
 
 #nose-info {
     top: 10px;
-    left: 30px;
+    left: 10px;
     position: absolute;
     z-index: 55;
     font-family: Arial, Helvetica, sans-serif;
@@ -180,7 +214,7 @@ body
 
 #upper-deck-info {
     top: 10px;
-    left: 30px;
+    left: 10px;
     position: absolute;
     z-index: 55;
     font-family: Arial, Helvetica, sans-serif;
