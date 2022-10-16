@@ -115,11 +115,13 @@ export default class Raycaster extends EventEmitter
             })
 
             if (intersects.length > 0) {
-                document.getElementById('landing-gear-info').className = "invisible"
-                document.getElementById('main-rotor-info').className = "invisible"
-                document.getElementById('tail-rotor-info').className = "invisible"
-                document.getElementById('nose-info').className = "invisible"
-                document.getElementById('upper-deck-info').className = "invisible"
+                if (intersects[0].object.parent.name != 'Body') {
+                    document.getElementById('landing-gear-info').className = "invisible"
+                    document.getElementById('main-rotor-info').className = "invisible"
+                    document.getElementById('tail-rotor-info').className = "invisible"
+                    document.getElementById('nose-info').className = "invisible"
+                    document.getElementById('upper-deck-info').className = "invisible"
+                }
 
                 if(intersects[0].object.parent.name==='LandingGear') {
                     document.getElementById('landing-gear-info').className = "visible"
