@@ -95,8 +95,10 @@ export default class Presentation
             this.raycaster = new Raycaster()
             this.tooltip = new Tooltip()
         } else {
-            this.UserInterface = new UserInterface()
+            this.UserInterface = new UserInterface(this.operator.serial)
         }
+
+        
 
         // console.log(this.tooltip)
 
