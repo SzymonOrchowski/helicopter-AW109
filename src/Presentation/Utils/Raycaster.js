@@ -23,8 +23,6 @@ export default class Raycaster extends EventEmitter
             pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 			pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
-            //const mouse3D = new THREE.Vector3( (event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerheight) * 2 - 1, 0.5 )
-
             raycaster.setFromCamera( pointer, this.camera );
 
             const sections = this.scene.children[3].children
@@ -37,11 +35,11 @@ export default class Raycaster extends EventEmitter
                 return 0
             })
 
+            document.getElementById('tooltip-container').innerHTML = ''
+            document.getElementById('tooltip-container').className = "tooltip-hidden"
+
             sections.forEach(section => {
-                // section.visible = false
                 section.children.forEach(part => {
-                    // console.log()
-                    // console.log(part.material.name)
                     if (part.material.name==='glass') {
                         part.material.color.r=0
                         part.material.color.g=0
@@ -73,29 +71,72 @@ export default class Raycaster extends EventEmitter
                         part.material.color.b=0
                     }
                 })
-                // section.material.color.r=1
-                // section.material.color.g=1
-                // section.material.color.b=1
             })
 
-            // sections[0].children.forEach(part => {
-            //     if (part.material.name === 'paint') {
-            //         part.material.color.r=0
-            //         part.material.color.g=0
-            //         part.material.color.b=0
-            //     }
-            // })
-
             if (intersects.length > 0) {
-                console.log(intersects[0].object.parent.name)
-                intersects[0].object.parent.children.forEach(mesh => {
-                           mesh.material.color.r=1
-                           mesh.material.color.g=0
-                           mesh.material.color.b=0
-                        })
+
+                const tooltip = document.getElementById('tooltip-container')
+
+                let sectionName = intersects[0].object.parent.name
+
+                sectionName = sectionName.split('_').map((name) => {return name[0].toUpperCase() + name.slice(1)}).join('')
+               
+                if (intersects[0].object.parent.name != 'Body') {
+                    tooltip.innerHTML = `<h3>${sectionName}</h3>`
+                    tooltip.className = "tooltip-visible"
+
+                    intersects[0].object.parent.children.forEach(mesh => {
+                            mesh.material.color.r=1
+                            mesh.material.color.g=0
+                            mesh.material.color.b=0
+                            })
+                }
             } 
             
             this.trigger('raycaster')
+        })
+
+        window.addEventListener('mousedown', (event) => {
+            event.preventDefault()
+
+            pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+			pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+            raycaster.setFromCamera( pointer, this.camera );
+
+            const sections = this.scene.children[3].children
+
+            const intersects = raycaster.intersectObjects( this.scene.children[3].children);
+
+            intersects.sort((a,b) => {
+                if (a.distance < b.distance) return -1
+                if (a.distance > b.distance) return 1
+                return 0
+            })
+
+            if (intersects.length > 0) {
+                document.getElementById('landing-gear-info').className = "invisible"
+                document.getElementById('main-rotor-info').className = "invisible"
+                document.getElementById('tail-rotor-info').className = "invisible"
+                document.getElementById('nose-info').className = "invisible"
+                document.getElementById('upper-deck-info').className = "invisible"
+
+                if(intersects[0].object.parent.name==='LandingGear') {
+                    document.getElementById('landing-gear-info').className = "visible"
+                } 
+                if(intersects[0].object.parent.name==='Main_rotor') {
+                    document.getElementById('main-rotor-info').className = "visible"
+                } 
+                if(intersects[0].object.parent.name==='Tail_Rotor') {
+                    document.getElementById('tail-rotor-info').className = "visible"
+                } 
+                if(intersects[0].object.parent.name==='Nose') {
+                    document.getElementById('nose-info').className = "visible"
+                } 
+                if(intersects[0].object.parent.name==='UpperDeck') {
+                    document.getElementById('upper-deck-info').className = "visible"
+                } 
+            } 
         })
     }
 }
