@@ -67,6 +67,14 @@ export default class World
         }
     }
 
+    rotateHelicopter()
+    {
+        if(this.engine)
+        {
+            this.engine.model.rotation.y += 0.004
+        }
+    }
+
     updateVisibilityState()
     {
         if(this.engine)

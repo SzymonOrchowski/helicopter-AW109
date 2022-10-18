@@ -138,6 +138,9 @@ export default class Presentation
         this.camera.update()
         this.world.update()
         // this.world.animateBlades()
+        if (this.operator.screen === 'detailed') {
+            this.world.rotateHelicopter()
+        }
         this.renderer.update()
     }
 
