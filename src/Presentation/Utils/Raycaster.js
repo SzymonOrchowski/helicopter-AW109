@@ -208,19 +208,43 @@ export default class Raycaster extends EventEmitter
 
                 sectionName = sectionName.split('_').map((name) => {return name[0].toUpperCase() + name.slice(1)}).join('')
                
+                // if (intersects[0].object.parent.name != 'Body') {
+                //     tooltip.innerHTML = `<h3>${sectionName}</h3>`
+                //     // tooltip.className = "tooltip-visible"
+
+
+                // }
+
                 if (intersects[0].object.parent.name != 'Body') {
-                    tooltip.innerHTML = `<h3>${sectionName}</h3>`
-                    // tooltip.className = "tooltip-visible"
+                    document.getElementById('landing-gear-info').className = "invisible"
+                    document.getElementById('main-rotor-info').className = "invisible"
+                    document.getElementById('tail-rotor-info').className = "invisible"
+                    document.getElementById('nose-info').className = "invisible"
+                    document.getElementById('upper-deck-info').className = "invisible"
 
                     intersects[0].object.parent.children.forEach(mesh => {
-                            mesh.material.color.r=1
-                            mesh.material.color.g=0
-                            mesh.material.color.b=0
-                            })
+                        mesh.material.color.r=1
+                        mesh.material.color.g=0
+                        mesh.material.color.b=0
+                        })
                 }
-            }
 
-            touchedComponent=intersects[0].object.parent.name
+                if(intersects[0].object.parent.name==='LandingGear') {
+                    document.getElementById('landing-gear-info').className = "visible"
+                } 
+                if(intersects[0].object.parent.name==='Main_rotor') {
+                    document.getElementById('main-rotor-info').className = "visible"
+                } 
+                if(intersects[0].object.parent.name==='Tail_Rotor') {
+                    document.getElementById('tail-rotor-info').className = "visible"
+                } 
+                if(intersects[0].object.parent.name==='Nose') {
+                    document.getElementById('nose-info').className = "visible"
+                } 
+                if(intersects[0].object.parent.name==='UpperDeck') {
+                    document.getElementById('upper-deck-info').className = "visible"
+                } 
+            }
 
             // timeOut = setTimeout(()=>{
             //     touchedComponent=intersects[0].object.parent.name
