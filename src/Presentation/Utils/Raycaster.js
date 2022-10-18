@@ -162,8 +162,8 @@ export default class Raycaster extends EventEmitter
                 return 0
             })
 
-            document.getElementById('tooltip-container').innerHTML = ''
-            document.getElementById('tooltip-container').className = "tooltip-hidden"
+            // document.getElementById('tooltip-container').innerHTML = ''
+            // document.getElementById('tooltip-container').className = "tooltip-hidden"
 
             sections.forEach(section => {
                 section.children.forEach(part => {
@@ -220,9 +220,12 @@ export default class Raycaster extends EventEmitter
                 }
             }
 
-            timeOut = setTimeout(()=>{
-                touchedComponent=intersects[0].object.parent.name
-            },1000)
+            touchedComponent=intersects[0].object.parent.name
+
+            // timeOut = setTimeout(()=>{
+            //     touchedComponent=intersects[0].object.parent.name
+            // },100)
+
         })
 
         window.addEventListener('touchend', (event) => {
