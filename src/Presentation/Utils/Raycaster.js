@@ -210,7 +210,7 @@ export default class Raycaster extends EventEmitter
                
                 if (intersects[0].object.parent.name != 'Body') {
                     tooltip.innerHTML = `<h3>${sectionName}</h3>`
-                    tooltip.className = "tooltip-visible"
+                    // tooltip.className = "tooltip-visible"
 
                     intersects[0].object.parent.children.forEach(mesh => {
                             mesh.material.color.r=1
@@ -229,7 +229,6 @@ export default class Raycaster extends EventEmitter
         })
 
         window.addEventListener('touchend', (event) => {
-            if (touchedComponent) {
                 event.preventDefault()
 
                 pointer.x = ( event.touches[0].clientX / window.innerWidth ) * 2 - 1;
@@ -272,9 +271,6 @@ export default class Raycaster extends EventEmitter
                         document.getElementById('upper-deck-info').className = "visible"
                     } 
                 } 
-            } else {
-                clearTimeout(timeOut)
-            }
         })
     }
 }
