@@ -24,14 +24,12 @@ body
 
 #options-container {
     position:absolute;
-    top: 0px;
+    top: calc(100% - 60px);
     left: calc(100% - 180px);
-    /* margin-top: 10px; */
     text-align: center;
     padding-top: 13px;
     width: min-content;
     height: 50px;
-    /* border: solid red 1px; */
 }
 
 .options-button {
@@ -42,10 +40,11 @@ body
     border: black 1px solid;
     border-radius: 15px;
     width: 150px;
+    z-index: 99
 }
 
 .options-button:hover {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(200,200,200,0.5);
 }
 
 #showDetails-button {

@@ -14,7 +14,7 @@ export default class World
 
         this.environment = new Environment()
 
-        this.animationSpeed = 0
+        this.animationSpeed = 0.004
         this.alertsArray = this.presentation.parts
 
         // const axesHelper = new THREE.AxesHelper()
@@ -71,7 +71,7 @@ export default class World
     {
         if(this.engine)
         {
-            this.engine.model.rotation.y += 0.004
+            this.engine.model.rotation.y += this.animationSpeed
         }
     }
 

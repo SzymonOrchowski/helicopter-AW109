@@ -91,14 +91,16 @@ export default class Presentation
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.world = new World()
+        this.UserInterface = new UserInterface(this.operator.serial)
+
         if (this.operator.screen === 'detailed') {
             this.raycaster = new Raycaster()
             this.tooltip = new Tooltip()
+            this.UserInterface.createStopAnimationButton()
         } else {
-            this.UserInterface = new UserInterface(this.operator.serial)
+            this.UserInterface.createShowDetailsButton()
         }
 
-        
 
         // console.log(this.tooltip)
 
@@ -110,21 +112,9 @@ export default class Presentation
             this.update()
         })
         
-        // this.userInterface.on('changeAnimationState', () => {
-        //     this.changeAnimationState()
-        // })
-
-        // this.userInterface.on('rig-selector-visibility-state-change', () => {
-        //     this.changeVisibility("rig")
-        // })
-
-        // this.userInterface.on('engine-selector-visibility-state-change', () => {
-        //     this.changeVisibility("engine")
-        // })
-
-        // this.userInterface.on('cooling-selector-visibility-state-change', () => {
-        //     this.changeVisibility("cooling")
-        // })
+        this.UserInterface.on('changeAnimationState', () => {
+            this.changeAnimationState()
+        })
     }
 
     resize()
