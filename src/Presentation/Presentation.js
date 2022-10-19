@@ -98,7 +98,7 @@ export default class Presentation
             this.tooltip = new Tooltip()
             this.UserInterface.createStopAnimationButton()
         } else {
-            this.UserInterface.createShowDetailsButton()
+            this.UserInterface.createShowDetailsButton(this.operator.serial)
         }
 
 

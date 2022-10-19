@@ -7,6 +7,8 @@ export default class UserInterface extends EventEmitter
     constructor(serial)
     {
         super()
+
+        this.serial = serial
     }
 
     createShowDetailsButton(serial)
